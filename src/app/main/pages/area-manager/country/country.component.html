@@ -1,0 +1,48 @@
+<div id="state-list" class="page-layout simple fullwidth">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
+         fxLayoutAlign.gt-xs="space-between center">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Area Manager</span>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Countries</span>
+            </div>
+            <div class="h2 mt-16">Countries</div>
+        </div>
+
+        <a mat-raised-button class="reference-button mt-16 mt-sm-0"
+           href="javascript:;" (click)="updateCountry()">
+            <mat-icon class="mr-8">add</mat-icon>
+            <span>Add Country</span>
+        </a>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <ngx-datatable
+            class="material"
+            [rows]="rows"
+            [loadingIndicator]="loadingIndicator"
+            [columnMode]="'force'"
+            [headerHeight]="48"
+            [footerHeight]="56"
+            [rowHeight]="'auto'"
+            [scrollbarH]="true"
+            [reorderable]="reorderable"
+            [limit]="10">
+
+            <ngx-datatable-column name="Name1" prop="name1"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Company" prop="company"></ngx-datatable-column>
+        </ngx-datatable>
+
+    </div>
+
+</div>
+

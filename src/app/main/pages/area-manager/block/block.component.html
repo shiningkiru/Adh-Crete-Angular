@@ -1,0 +1,55 @@
+<div id="state-list" class="page-layout simple fullwidth">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
+         fxLayoutAlign.gt-xs="space-between center">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Area Manager</span>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Block's</span>
+            </div>
+            <div class="h2 mt-16">Block's</div>
+        </div>
+
+        <a mat-raised-button class="reference-button mt-16 mt-sm-0"
+           href="https://github.com/swimlane/ngx-datatable">
+            <mat-icon class="mr-8">add</mat-icon>
+            <span>Add Block</span>
+        </a>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p class="mb-32">
+            <b>ngx-datatable</b> is a Angular component for presenting large and complex data.
+            It has all the features you would expect from any other table but in a light package with no external
+            dependencies. The table was designed to be extremely flexible and light; it doesn't make any assumptions
+            about your data or how you: filter, sort or page it.
+        </p>
+
+        <ngx-datatable
+            class="material"
+            [rows]="rows"
+            [loadingIndicator]="loadingIndicator"
+            [columnMode]="'force'"
+            [headerHeight]="48"
+            [footerHeight]="56"
+            [rowHeight]="'auto'"
+            [scrollbarH]="true"
+            [reorderable]="reorderable"
+            [limit]="10">
+
+            <ngx-datatable-column name="Name1" prop="name1"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Company" prop="company"></ngx-datatable-column>
+        </ngx-datatable>
+
+    </div>
+
+</div>
+
