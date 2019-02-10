@@ -3,3 +3,13 @@
 
 // Import app.theme.scss
 @import "app/app.theme";
+
+.error-snack-bar {
+    background-color: rgba(226, 17, 17, 0.89) !important;
+    color: #fff;
+}
+
+.success-snack-bar {
+    background-color: rgb(6, 70, 6) !important;
+    color: #fff;
+}

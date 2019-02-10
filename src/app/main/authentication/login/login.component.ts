@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
+import { Router } from '@angular/router';
+import { AuthService } from './../../../shared/services/auth.service';
+import { AlertService } from './../../../shared/services/alert.service';
 
 @Component({
     selector     : 'login',
@@ -23,7 +26,10 @@ export class LoginComponent implements OnInit
      */
     constructor(
         private _fuseConfigService: FuseConfigService,
-        private _formBuilder: FormBuilder
+        private _formBuilder: FormBuilder,
+        private authService:AuthService,
+        private router:Router,
+        private alertService: AlertService
     )
     {
         // Configure the layout
@@ -58,5 +64,23 @@ export class LoginComponent implements OnInit
             email   : ['', [Validators.required, Validators.email]],
             password: ['', Validators.required]
         });
+
+        if(this.authService.isloggedin()){
+            this.router.navigate(['/admin/dashboard']);
+        }
     }
+  
+  checkLogin(event){
+      event.preventDefault();
+    this.authService.login(this.loginForm.value).subscribe(response=>{
+      if(response){
+        this.router.navigate(['/admin/dashboard']);
+      }else
+      {
+        this.alertService.openErrorPanel("Invalid Credentials");
+      }
+    },error=>{
+      this.alertService.openErrorPanel("Invalid Credentials");
+    })
+  }
 }

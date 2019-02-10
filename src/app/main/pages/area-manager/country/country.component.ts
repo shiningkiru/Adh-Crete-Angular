@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { AddCountryComponent } from './../components/add-country/add-country.component';
+import { CountryService } from './../../../../shared/services/country.service';
 
 @Component({
   selector: 'app-country',
@@ -17,11 +18,19 @@ export class CountryComponent implements OnInit, OnDestroy {
     loadingIndicator=true;
     dialogRef: MatDialogRef<AddCountryComponent>;
 
-    constructor(private _matDialog: MatDialog) {
+    constructor(private _matDialog: MatDialog, private _serv: CountryService) {
         this._unsubscribeAll = new Subject();
     }
 
     ngOnInit() {
+        this.getCountries();
+    }
+
+    getCountries(){
+        this._serv.get().subscribe(response => {
+            this.loadingIndicator=false;
+            this.rows = response as any[];
+        })
     }
 
     /**

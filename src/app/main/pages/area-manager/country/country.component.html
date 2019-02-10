@@ -37,9 +37,23 @@
             [reorderable]="reorderable"
             [limit]="10">
 
-            <ngx-datatable-column name="Name1" prop="name1"></ngx-datatable-column>
+            <ngx-datatable-column name="Country" prop="countryName" >
+                <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                  {{value}}
+                </ng-template>
+            </ngx-datatable-column>
 
-            <ngx-datatable-column name="Company" prop="company"></ngx-datatable-column>
+            <ngx-datatable-column name="Country Code" prop="countryCode" >
+                <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                  {{value}}
+                </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Action">
+                <ng-template   let-row="row" ngx-datatable-cell-template>
+                    a
+                </ng-template>
+            </ngx-datatable-column>
         </ngx-datatable>
 
     </div>

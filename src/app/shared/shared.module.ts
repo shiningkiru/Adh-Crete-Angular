@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
-import { MatIconModule, MatCheckboxModule, MatButtonModule, MatDialogModule } from '@angular/material';
+import { MatIconModule, MatCheckboxModule, MatButtonModule, MatDialogModule, MatSnackBarModule } from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
@@ -28,6 +28,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
         MatCheckboxModule,
         MatIconModule,
         MatDialogModule,
+        MatSnackBarModule,
 
         NgxDatatableModule,
   ]

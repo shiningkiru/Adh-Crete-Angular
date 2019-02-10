@@ -28,7 +28,7 @@
 
             <div class="title">LOGIN TO YOUR ACCOUNT</div>
 
-            <form name="loginForm" [formGroup]="loginForm" novalidate>
+            <form name="loginForm" [formGroup]="loginForm" (ngSubmit)="checkLogin($event)">
 
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
@@ -54,7 +54,7 @@
                 </mat-form-field>
 
 
-                <button type="submit" mat-raised-button color="accent" [routerLink]="['/admin/dashboard']" class="submit-button" aria-label="LOGIN"
+                <button type="submit" mat-raised-button color="accent" class="submit-button" aria-label="LOGIN"
                         [disabled]="loginForm.invalid">
                     LOGIN
                 </button>
