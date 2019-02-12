@@ -7,11 +7,13 @@ import { SearchClassicModule } from 'app/main/pages/search/classic/search-classi
 import { SearchModernModule } from 'app/main/pages/search/modern/search-modern.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AreaManagerModule } from './area-manager/area-manager.module';
+import { UserAccessModule } from './user-access/user-access.module';
 
 @NgModule({
     imports: [
         DashboardModule,
         AreaManagerModule,
+        UserAccessModule,
 
         // Errors
         Error404Module,

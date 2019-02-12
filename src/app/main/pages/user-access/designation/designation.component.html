@@ -1,0 +1,60 @@
+<div id="designation-list" class="page-layout simple fullwidth">
+
+  <!-- HEADER -->
+  <div class="header accent p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
+       fxLayoutAlign.gt-xs="space-between center">
+      <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
+          <div fxLayout="row" fxLayoutAlign="start center">
+              <mat-icon class="secondary-text s-18">home</mat-icon>
+              <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+              <span class="secondary-text">User Access</span>
+              <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+              <span class="secondary-text">Designation</span>
+          </div>
+          <div class="h2 mt-16">Designations</div>
+      </div>
+
+      <a mat-raised-button class="reference-button mt-16 mt-sm-0"
+         href="javascript:;" (click)="updateDesignation()">
+          <mat-icon class="mr-8">add</mat-icon>
+          <span>Add Designation</span>
+      </a>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content p-24">
+
+      <ngx-datatable
+          class="material"
+          [rows]="rows"
+          [loadingIndicator]="loadingIndicator"
+          [columnMode]="'force'"
+          [headerHeight]="48"
+          [footerHeight]="56"
+          [rowHeight]="'auto'"
+          [scrollbarH]="true"
+          [reorderable]="reorderable"
+          [limit]="10">
+
+
+          <ngx-datatable-column name="Designation Name" prop="designationTitle"></ngx-datatable-column>
+
+          <ngx-datatable-column name="Target" prop="targetArea">
+            <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+              {{value|titlecase}}
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Action">
+              <ng-template   let-row="row" ngx-datatable-cell-template>
+                  <button (click)="updateDesignation(row)" mat-icon-button><i class="material-icons">edit</i></button>
+                  <button (click)="deleteDesignation(row)" mat-icon-button><i class="material-icons">delete</i></button>
+              </ng-template>
+          </ngx-datatable-column>
+      </ngx-datatable>
+
+  </div>
+
+</div>
+

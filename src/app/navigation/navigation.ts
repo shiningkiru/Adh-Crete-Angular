@@ -18,6 +18,27 @@ export const navigation: FuseNavigation[] = [
         ]
     },
     {
+        id       : 'user-access',
+        title    : 'User Access',
+        translate: 'User Access',
+        type     : 'collapsable',
+        icon     : 'https',
+        children : [
+            {
+                id   : 'designation',
+                title: 'Designation',
+                type : 'item',
+                url  : '/admin/user-access/designation'
+            },
+            {
+                id   : 'access-privileges',
+                title: 'Access Privileges',
+                type : 'item',
+                url  : '/admin/user-access/previleges'
+            }
+        ]
+    },
+    {
         id       : 'area-manager',
         title    : 'Area Manager',
         translate: 'Area Manager',

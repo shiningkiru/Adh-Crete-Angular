@@ -1,0 +1,28 @@
+<form fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form" [formGroup]="designationForm">
+  
+  <div class="h2 mb-24">Designation Update</div>
+  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="outline" fxFlex="100">
+          <mat-label>Designation Title</mat-label>
+          <input matInput formControlName="designationTitle">
+          <mat-icon matSuffix class="disabled-text">domain</mat-icon>
+      </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="outline" fxFlex="100">
+          <mat-label>Target Area</mat-label>
+          <mat-select formControlName="targetArea">
+            <mat-option value="admin">Admin</mat-option>
+            <mat-option value="country">Country</mat-option>
+            <mat-option value="state">State</mat-option>
+            <mat-option value="region">Region</mat-option>
+            <mat-option value="city">City</mat-option>
+            <mat-option value="block">Block</mat-option>
+          </mat-select>
+          <mat-icon matSuffix class="disabled-text">domain</mat-icon>
+      </mat-form-field>
+  </div>
+  <div fxLayout="row">
+    <button type="button"  (click)="updateDesignation()" mat-raised-button color="primary">Save</button>
+  </div>
+</form>
