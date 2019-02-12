@@ -10,10 +10,6 @@ interface Post {
   status: Boolean;
 };
 
-interface Profile{
-  profilePic:string;
-}
-
 @Injectable({
   providedIn:'root'
 })

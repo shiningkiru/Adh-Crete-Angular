@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import { DataService } from './data.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StateService {
+export class StateService  extends DataService {
 
-  constructor() { }
+  constructor(public http:HttpClient) { 
+    super(http,'state')
+  }
 }

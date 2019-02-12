@@ -1,4 +1,4 @@
-<div id="state-list" class="page-layout simple fullwidth">
+<div id="region-list" class="page-layout simple fullwidth">
 
     <!-- HEADER -->
     <div class="header accent p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
@@ -15,7 +15,7 @@
         </div>
 
         <a mat-raised-button class="reference-button mt-16 mt-sm-0"
-           href="https://github.com/swimlane/ngx-datatable">
+           href="javascript:;" (click)="updateRegion()">
             <mat-icon class="mr-8">add</mat-icon>
             <span>Add Region</span>
         </a>
@@ -24,13 +24,6 @@
 
     <!-- CONTENT -->
     <div class="content p-24">
-
-        <p class="mb-32">
-            <b>ngx-datatable</b> is a Angular component for presenting large and complex data.
-            It has all the features you would expect from any other table but in a light package with no external
-            dependencies. The table was designed to be extremely flexible and light; it doesn't make any assumptions
-            about your data or how you: filter, sort or page it.
-        </p>
 
         <ngx-datatable
             class="material"
@@ -45,9 +38,16 @@
             [limit]="10">
 
 
-            <ngx-datatable-column name="Name1" prop="name1"></ngx-datatable-column>
+            <ngx-datatable-column name="Region Name" prop="regionName"></ngx-datatable-column>
 
-            <ngx-datatable-column name="Company" prop="company"></ngx-datatable-column>
+            <ngx-datatable-column name="State" prop="state.stateName"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Action">
+                <ng-template   let-row="row" ngx-datatable-cell-template>
+                    <button (click)="updateRegion(row)" mat-icon-button><i class="material-icons">edit</i></button>
+                    <button (click)="deleteRegion(row)" mat-icon-button><i class="material-icons">delete</i></button>
+                </ng-template>
+            </ngx-datatable-column>
         </ngx-datatable>
 
     </div>

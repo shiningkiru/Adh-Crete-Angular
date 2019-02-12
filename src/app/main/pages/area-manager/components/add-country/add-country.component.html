@@ -1,3 +1,23 @@
-<p>
-  add-country works!
-</p>
+
+<form fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form" [formGroup]="countryForm">
+  
+    <div class="h2 mb-24">Country Update</div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Country Name</mat-label>
+            <input matInput formControlName="countryName">
+            <mat-icon matSuffix class="disabled-text">domain</mat-icon>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Country Code</mat-label>
+            <input matInput formControlName="countryCode">
+            <mat-icon matSuffix class="disabled-text">domain</mat-icon>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row">
+      <button type="button"  (click)="updateCountry()" mat-raised-button color="primary">Save</button>
+    </div>
+</form>

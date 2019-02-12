@@ -1,3 +1,26 @@
-<p>
-  add-region works!
-</p>
+<form fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form" [formGroup]="regionForm">
+  
+  <div class="h2 mb-24">Region Update</div>
+  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field  appearance="outline" fxFlex="100">
+        <mat-label>State</mat-label>
+        <input type="text" matInput formControlName="stateName" [matAutocomplete]="state" (keyup)="stateTyping=true" (blur)="checkState()">
+        <mat-icon matSuffix class="disabled-text">domain</mat-icon>
+        <mat-autocomplete #state="matAutocomplete">
+          <mat-option *ngFor="let state of filteredState | async" [value]="state.stateName"  (onSelectionChange)="onSelectState($event, state);">
+            {{state.stateName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="outline" fxFlex="100">
+          <mat-label>Region Name</mat-label>
+          <input matInput formControlName="regionName">
+          <mat-icon matSuffix class="disabled-text">domain</mat-icon>
+      </mat-form-field>
+  </div>
+  <div fxLayout="row">
+    <button type="button"  (click)="updateRegion()" mat-raised-button color="primary">Save</button>
+  </div>
+</form>

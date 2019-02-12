@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import { DataService } from './data.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BlockService {
+export class BlockService  extends DataService {
 
-  constructor() { }
+  constructor(public http:HttpClient) { 
+    super(http,'block')
+  }
 }

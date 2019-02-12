@@ -1,3 +1,26 @@
-<p>
-  add-city works!
-</p>
+<form fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form" [formGroup]="cityForm">
+  
+  <div class="h2 mb-24">City Update</div>
+  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field  appearance="outline" fxFlex="100">
+        <mat-label>Region</mat-label>
+        <input type="text" matInput formControlName="regionName" [matAutocomplete]="region" (keyup)="regionTyping=true" (blur)="checkRegion()">
+        <mat-icon matSuffix class="disabled-text">domain</mat-icon>
+        <mat-autocomplete #region="matAutocomplete">
+          <mat-option *ngFor="let region of filteredRegion | async" [value]="region.regionName"  (onSelectionChange)="onSelectRegion($event, region);">
+            {{region.regionName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+      <mat-form-field appearance="outline" fxFlex="100">
+          <mat-label>City Name</mat-label>
+          <input matInput formControlName="cityName">
+          <mat-icon matSuffix class="disabled-text">domain</mat-icon>
+      </mat-form-field>
+  </div>
+  <div fxLayout="row">
+    <button type="button"  (click)="updateCity()" mat-raised-button color="primary">Save</button>
+  </div>
+</form>
