@@ -34,7 +34,7 @@ export const navigation: FuseNavigation[] = [
                 id   : 'access-privileges',
                 title: 'Access Privileges',
                 type : 'item',
-                url  : '/admin/user-access/previleges'
+                url  : '/admin/user-access/permissions'
             }
         ]
     },

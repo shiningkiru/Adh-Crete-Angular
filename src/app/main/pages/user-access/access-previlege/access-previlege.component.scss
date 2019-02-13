@@ -1,0 +1,10 @@
+.search-button {
+    height: 66%;
+    display: flex;
+    align-self: end;
+    margin: .25em 0;
+
+    & i{
+        color: #fff;
+    }
+}

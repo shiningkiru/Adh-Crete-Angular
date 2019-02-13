@@ -31,11 +31,11 @@ export class DataService {
   }
 
   getByURL(url){
-    return this.http.get(this.apiUrl+url,this.token);
+    return this.http.get(this.apiUrl+this.url+url,this.token);
   }
 
   postByURL(url,formData={}){
-    return this.http.post(this.apiUrl+url, formData ,this.token);
+    return this.http.post(this.apiUrl+this.url+url, formData ,this.token);
   }
   
   createFormData(object: Object, form?: FormData, namespace?: string): FormData {

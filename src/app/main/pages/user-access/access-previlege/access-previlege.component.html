@@ -1,0 +1,78 @@
+<div id="access-previlege-list" class="page-layout simple fullwidth">
+
+  <!-- HEADER -->
+  <div class="header accent p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
+       fxLayoutAlign.gt-xs="space-between center">
+      <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
+          <div fxLayout="row" fxLayoutAlign="start center">
+              <mat-icon class="secondary-text s-18">home</mat-icon>
+              <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+              <span class="secondary-text">User Access</span>
+              <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+              <span class="secondary-text">Access Previleges</span>
+          </div>
+          <div class="h2 mt-16">Access Previleges</div>
+      </div>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content p-24">
+    <div class="row">
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+          <mat-form-field  appearance="outline" fxFlex="15">
+            <mat-label>Select Designation</mat-label>
+            <input type="text" matInput [formControl]="designation" [matAutocomplete]="designationAuto" (keyup)="designationTyping=true" (blur)="checkDesignation()">
+            <mat-icon matSuffix class="disabled-text">domain</mat-icon>
+            <mat-autocomplete #designationAuto="matAutocomplete">
+              <mat-option *ngFor="let designation of filteredDesignation | async" [value]="designation.designationTitle"  (onSelectionChange)="onSelectDesignation($event, designation);">
+                {{designation.designationTitle}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <button type="button" class="search-button" (click)="getPrevileges()" mat-raised-button color="primary"><i class="material-icons">search</i></button>
+      </div>
+    </div>
+      <ngx-datatable
+          class="material"
+          [rows]="rows"
+          [loadingIndicator]="loadingIndicator"
+          [columnMode]="'force'"
+          [headerHeight]="48"
+          [footerHeight]="56"
+          [rowHeight]="'auto'"
+          [scrollbarH]="true"
+          [reorderable]="reorderable"
+          [limit]="10">
+
+          <ngx-datatable-column name="Module" prop="moduleName" >
+              <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Designation" prop="designation.designationTitle" >
+              <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{value}}
+              </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Permission" prop="permission" >
+              <ng-template let-value="value"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                <span *ngIf="value == 'allowed'"><i class="material-icons text-success">thumb_up_alt</i> Allowed</span>
+                <span *ngIf="value == 'denied'"><i class="material-icons text-danger">thumb_down_alt</i> Denied</span>
+                <span *ngIf="value == 'readonly'"><i class="material-icons">visibility</i> Read Only</span>
+              </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Action">
+              <ng-template   let-row="row" ngx-datatable-cell-template>
+                  <button (click)="updateCountry(row)" mat-icon-button><i class="material-icons">edit</i></button>
+              </ng-template>
+          </ngx-datatable-column>
+      </ngx-datatable>
+
+  </div>
+
+</div>
+

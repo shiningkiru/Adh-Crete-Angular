@@ -1,0 +1,33 @@
+
+<form fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form" [formGroup]="permissionForm">
+  
+  <div class="h2 mb-24">Permission Update</div>
+
+  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+    <mat-form-field appearance="outline" fxFlex="100">
+        <mat-label>Module Name</mat-label>
+        <input matInput formControlName="moduleName" readonly>
+        <mat-icon matSuffix class="disabled-text">domain</mat-icon>
+    </mat-form-field>
+</div>
+<div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+    <mat-form-field appearance="outline" fxFlex="100">
+        <mat-label>Designation Title</mat-label>
+        <input matInput formControlName="designationTitle" readonly>
+        <mat-icon matSuffix class="disabled-text">domain</mat-icon>
+    </mat-form-field>
+</div>
+<div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+    <mat-form-field appearance="outline" fxFlex="100">
+        <mat-label>Permissions</mat-label>
+        <mat-select formControlName="permission">
+          <mat-option value="allowed">Allowed</mat-option>
+          <mat-option value="denied">Denied</mat-option>
+        </mat-select>
+        <mat-icon matSuffix class="disabled-text">domain</mat-icon>
+    </mat-form-field>
+</div>
+  <div fxLayout="row">
+    <button type="button"  (click)="updateCountry()" mat-raised-button color="primary">Save</button>
+  </div>
+</form>
