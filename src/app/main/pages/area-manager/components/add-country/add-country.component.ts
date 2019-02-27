@@ -12,9 +12,9 @@ import { FormService } from 'app/shared/services/form.service';
   styleUrls: ['./add-country.component.scss']
 })
 export class AddCountryComponent implements OnInit {
-  private countryForm: FormGroup;
-  private formData: Country;
-  private countryData;
+  countryForm: FormGroup;
+  formData: Country;
+  countryData;
   
   constructor(private fb: FormBuilder, 
             private _serv: CountryService,

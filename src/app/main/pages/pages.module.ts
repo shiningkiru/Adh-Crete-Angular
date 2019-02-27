@@ -14,13 +14,11 @@ import { UserAccessModule } from './user-access/user-access.module';
         DashboardModule,
         AreaManagerModule,
         UserAccessModule,
+        ProfileModule,
 
         // Errors
         Error404Module,
         Error500Module,
-
-        // Profile
-        ProfileModule,
 
         // Search
         SearchClassicModule,

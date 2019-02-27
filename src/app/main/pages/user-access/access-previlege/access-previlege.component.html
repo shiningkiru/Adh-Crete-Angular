@@ -20,7 +20,7 @@
   <div class="content p-24">
     <div class="row">
       <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
-          <mat-form-field  appearance="outline" fxFlex="15">
+          <mat-form-field  appearance="outline" fxFlex="100">
             <mat-label>Select Designation</mat-label>
             <input type="text" matInput [formControl]="designation" [matAutocomplete]="designationAuto" (keyup)="designationTyping=true" (blur)="checkDesignation()">
             <mat-icon matSuffix class="disabled-text">domain</mat-icon>
@@ -42,7 +42,6 @@
           [footerHeight]="56"
           [rowHeight]="'auto'"
           [scrollbarH]="true"
-          [reorderable]="reorderable"
           [limit]="10">
 
           <ngx-datatable-column name="Module" prop="moduleName" >

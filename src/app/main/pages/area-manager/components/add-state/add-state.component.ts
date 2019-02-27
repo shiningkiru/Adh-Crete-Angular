@@ -16,9 +16,9 @@ import { Country } from 'app/shared/Models/country';
   styleUrls: ['./add-state.component.scss']
 })
 export class AddStateComponent implements OnInit {
-  private stateForm: FormGroup;
-  private formData: State;
-  private stateData;
+  stateForm: FormGroup;
+  formData: State;
+  stateData;
   selectedCountry:Country;
   countryList: Country[];
   filteredCountry: Observable<Object[]>;

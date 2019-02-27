@@ -12,9 +12,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
   styleUrls: ['./update-permission.component.scss']
 })
 export class UpdatePermissionComponent implements OnInit {
-  private permissionForm: FormGroup;
-  private formData: Previlege;
-  private permissionData;
+  permissionForm: FormGroup;
+  formData: Previlege;
+  permissionData;
   
   constructor(private fb: FormBuilder, 
             private _serv: AccessPrevilegeService,

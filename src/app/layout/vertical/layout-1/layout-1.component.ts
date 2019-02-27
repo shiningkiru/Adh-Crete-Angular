@@ -4,6 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { navigation } from 'app/navigation/navigation';
+import { AuthService } from 'app/shared/services/auth.service';
 
 @Component({
     selector     : 'vertical-layout-1',
@@ -25,7 +26,8 @@ export class VerticalLayout1Component implements OnInit, OnDestroy
      * @param {FuseConfigService} _fuseConfigService
      */
     constructor(
-        private _fuseConfigService: FuseConfigService
+        private _fuseConfigService: FuseConfigService,
+        private _auth: AuthService
     )
     {
         // Set the defaults
@@ -43,13 +45,15 @@ export class VerticalLayout1Component implements OnInit, OnDestroy
      * On init
      */
     ngOnInit(): void
-    {
+    { 
         // Subscribe to config changes
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config) => {
                 this.fuseConfig = config;
             });
+
+            this._auth.getLoggedInUser();
     }
 
     /**

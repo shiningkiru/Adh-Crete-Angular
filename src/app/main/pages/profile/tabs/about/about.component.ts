@@ -1,9 +1,8 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation, Input, OnChanges } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
-import { ProfileService } from 'app/main/pages/profile/profile.service';
 
 @Component({
     selector     : 'profile-about',
@@ -12,9 +11,11 @@ import { ProfileService } from 'app/main/pages/profile/profile.service';
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class ProfileAboutComponent implements OnInit, OnDestroy
+export class ProfileAboutComponent implements OnInit, OnChanges, OnDestroy
 {
     about: any;
+    workFieldHash="def";
+    @Input('user') user;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -25,7 +26,6 @@ export class ProfileAboutComponent implements OnInit, OnDestroy
      * @param {ProfileService} _profileService
      */
     constructor(
-        private _profileService: ProfileService
     )
     {
         // Set the private defaults
@@ -41,11 +41,17 @@ export class ProfileAboutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        this._profileService.aboutOnChanged
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(about => {
-                this.about = about;
-            });
+    }
+
+    ngOnChanges() {
+        let designation = (this.user)?this.user.designation:null;
+        if(designation){
+            if(designation.targetArea == 'country')this.workFieldHash="a";
+            if(designation.targetArea == 'state')this.workFieldHash="ab";
+            if(designation.targetArea == 'region')this.workFieldHash="abc";
+            if(designation.targetArea == 'city')this.workFieldHash="abcd";
+            if(designation.targetArea == 'block')this.workFieldHash="abcde";
+        }
     }
 
     /**

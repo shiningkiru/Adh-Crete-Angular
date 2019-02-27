@@ -18,6 +18,48 @@ export const navigation: FuseNavigation[] = [
         ]
     },
     {
+        id       : 'Staff Manager',
+        title    : 'staff-manager',
+        translate: 'Staff Manager',
+        type     : 'collapsable',
+        icon     : 'group',
+        children : [
+            {
+                id   : 'staff-list',
+                title: 'Staff List',
+                type : 'item',
+                url  : '/admin/all-staffs'
+            },
+            {
+                id   : 'staff-new',
+                title: 'Add New',
+                type : 'item',
+                url  : '/admin/new-staff'
+            }
+        ]
+    },
+    {
+        id       : 'Admin Manager',
+        title    : 'admin-manager',
+        translate: 'Admin Manager',
+        type     : 'collapsable',
+        icon     : 'settings',
+        children : [
+            {
+                id   : 'admin-list',
+                title: 'Admin List',
+                type : 'item',
+                url  : '/admin/all-admins'
+            },
+            {
+                id   : 'admin-new',
+                title: 'Add New',
+                type : 'item',
+                url  : '/admin/new-admin'
+            }
+        ]
+    },
+    {
         id       : 'user-access',
         title    : 'User Access',
         translate: 'User Access',

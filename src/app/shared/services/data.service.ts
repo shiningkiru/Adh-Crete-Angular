@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { map } from 'rxjs/operators';
 import { environment } from './../../../environments/environment';
+import { User } from '../Models/user';
 
 @Injectable()
 export class DataService {
@@ -11,30 +12,37 @@ export class DataService {
   constructor(public http: HttpClient, public url) { }
 
   get(){
+    this.token= { headers: new HttpHeaders({'Authorization': 'Bearer ' + AuthService.getToken()})}
     return this.http.get(this.apiUrl+this.url,this.token);
   }
 
   create(formData){
+    this.token= { headers: new HttpHeaders({'Authorization': 'Bearer ' + AuthService.getToken()})}
     return this.http.post(this.apiUrl+this.url, formData ,this.token);
   }
 
   update(id,formData){
+    this.token= { headers: new HttpHeaders({'Authorization': 'Bearer ' + AuthService.getToken()})}
     return this.http.put(this.apiUrl+this.url+"/"+id, formData,this.token);
   }
   
   delete(id){
+    this.token= { headers: new HttpHeaders({'Authorization': 'Bearer ' + AuthService.getToken()})}
     return this.http.delete(this.apiUrl+this.url+"/"+id,this.token);
   }
   
   getBy(id){
+    this.token= { headers: new HttpHeaders({'Authorization': 'Bearer ' + AuthService.getToken()})}
     return this.http.get(this.apiUrl+this.url+"/"+id,this.token);
   }
 
   getByURL(url){
+    this.token= { headers: new HttpHeaders({'Authorization': 'Bearer ' + AuthService.getToken()})}
     return this.http.get(this.apiUrl+this.url+url,this.token);
   }
 
   postByURL(url,formData={}){
+    this.token= { headers: new HttpHeaders({'Authorization': 'Bearer ' + AuthService.getToken()})}
     return this.http.post(this.apiUrl+this.url+url, formData ,this.token);
   }
   
@@ -51,6 +59,24 @@ export class DataService {
             this.createFormData(object[property], formData, formKey);
           } else {
             formData.append(formKey, object[property]);
+          }
+      }
+      return formData;
+  }
+  
+  createconverNullToString(object: Object, form?: User, namespace?: string) {
+      const formData = form || new User();
+      for (let property in object) {
+          if (!object.hasOwnProperty(property) || !object[property]) {
+            continue;
+          }
+          const formKey = namespace ? `${namespace}[${property}]` : property;
+          if (object[property] instanceof Date) {
+            formData[formKey]=object[property].toISOString();
+          } else if (typeof object[property] === 'object' && !(object[property] instanceof File)) {
+            this.createconverNullToString(object[property], formData, formKey);
+          } else {
+            formData[formKey]=object[property];
           }
       }
       return formData;

@@ -16,9 +16,9 @@ import { startWith, map } from 'rxjs/operators';
   styleUrls: ['./add-city.component.scss']
 })
 export class AddCityComponent implements OnInit {
-  private cityForm: FormGroup;
-  private formData: City;
-  private cityData;
+  cityForm: FormGroup;
+  formData: City;
+  cityData;
   selectedRegion:Region;
   regionList: Region[];
   filteredRegion: Observable<Object[]>;

@@ -18,6 +18,8 @@ import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { PagesModule } from './main/pages/pages.module';
 import { LoginModule } from './main/authentication/login/login.module';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './ngrx/reducers/user.reducers';
 
 const appRoutes: Routes = [
     {
@@ -56,6 +58,10 @@ const appRoutes: Routes = [
         LayoutModule,
         LoginModule,
         PagesModule,
+
+        StoreModule.forRoot({
+            User: userReducer
+        })
         
     ],
     bootstrap   : [

@@ -1,0 +1,73 @@
+<div id="city-list" class="page-layout simple fullwidth">
+
+  <!-- HEADER -->
+  <div class="header accent p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
+       fxLayoutAlign.gt-xs="space-between center">
+      <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
+          <div fxLayout="row" fxLayoutAlign="start center">
+              <mat-icon class="secondary-text s-18">home</mat-icon>
+              <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+              <span class="secondary-text" *ngIf="isAdmin">Admin Manager</span>
+              <span class="secondary-text" *ngIf="!isAdmin">Staff Manager</span>
+              <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+              <span class="secondary-text" *ngIf="isAdmin">Admins</span>
+              <span class="secondary-text" *ngIf="!isAdmin">Staffs</span>
+          </div>
+          <div class="h2 mt-16" *ngIf="isAdmin">Admins</div>
+          <div class="h2 mt-16" *ngIf="!isAdmin">Staffs</div>
+      </div>
+
+      <a *ngIf="isAdmin" mat-raised-button class="reference-button mt-16 mt-sm-0"
+         href="javascript:;" routerLink="/admin/new-admin">
+          <mat-icon class="mr-8">add</mat-icon>
+          <span>Add Admin</span>
+      </a>
+
+      <a *ngIf="!isAdmin" mat-raised-button class="reference-button mt-16 mt-sm-0"
+         href="javascript:;" routerLink="/admin/new-staff">
+          <mat-icon class="mr-8">add</mat-icon>
+          <span>Add Staff</span>
+      </a>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content p-24">
+
+      <ngx-datatable
+          class="material"
+          [rows]="rows"
+          [loadingIndicator]="loadingIndicator"
+          [columnMode]="'force'"
+          [headerHeight]="48"
+          [footerHeight]="56"
+          [rowHeight]="'auto'"
+          [scrollbarH]="true"
+          [limit]="10">
+
+
+          <ngx-datatable-column name="Full Name">
+            <ng-template   let-row="row" ngx-datatable-cell-template>
+              <i *ngIf="row.isActive" class="material icons text-success mat-subheading-2">mood</i> 
+              <i *ngIf="!row.isActive" class="material icons text-danger mat-subheading-2">mood_bad</i> 
+              {{ row.firstName + " " + row.lastName}}
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Email" prop="email"></ngx-datatable-column>
+
+          <ngx-datatable-column name="Mobile No." prop="mobileNumber"></ngx-datatable-column>
+
+
+          <ngx-datatable-column name="Action">
+              <ng-template   let-row="row" ngx-datatable-cell-template>
+                  <button [routerLink]="['/admin/profile/'+ row.id]" mat-icon-button><i class="material-icons">visibility</i></button>
+                  <button (click)="deleteUser(row)" mat-icon-button><i class="material-icons">delete</i></button>
+              </ng-template>
+          </ngx-datatable-column>
+      </ngx-datatable>
+
+  </div>
+
+</div>
+

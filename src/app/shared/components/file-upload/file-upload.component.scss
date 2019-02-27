@@ -1,0 +1,13 @@
+.fuse-file-upld {
+    display: block;
+    width: 150px;
+    height: 150px;
+    max-width: 100%;
+    background-position: center;
+    background-size: cover;
+
+    
+    & input {
+        opacity: 0;
+    }
+}

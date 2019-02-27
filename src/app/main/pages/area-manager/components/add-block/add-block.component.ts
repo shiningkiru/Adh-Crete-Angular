@@ -16,9 +16,9 @@ import { startWith, map } from 'rxjs/operators';
   styleUrls: ['./add-block.component.scss']
 })
 export class AddBlockComponent implements OnInit {
-  private blockForm: FormGroup;
-  private formData: Block;
-  private blockData;
+  blockForm: FormGroup;
+  formData: Block;
+  blockData;
   selectedCity:City;
   cityList: City[];
   filteredCity: Observable<Object[]>;

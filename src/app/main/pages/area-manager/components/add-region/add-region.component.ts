@@ -16,9 +16,9 @@ import { startWith, map } from 'rxjs/operators';
   styleUrls: ['./add-region.component.scss']
 })
 export class AddRegionComponent implements OnInit {
-  private regionForm: FormGroup;
-  private formData: Region;
-  private regionData;
+  regionForm: FormGroup;
+  formData: Region;
+  regionData;
   selectedState:State;
   stateList: State[];
   filteredState: Observable<Object[]>;

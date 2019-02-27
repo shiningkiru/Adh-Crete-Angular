@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { fuseAnimations } from '@fuse/animations';
-
-import { ProfileService } from '../../profile.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -26,7 +24,6 @@ export class ProfileTimelineComponent implements OnInit, OnDestroy
      * @param {ProfileService} _profileService
      */
     constructor(
-        private _profileService: ProfileService
     )
     {
         // Set the private defaults
@@ -42,11 +39,6 @@ export class ProfileTimelineComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        this._profileService.timelineOnChanged
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(timeline => {
-                this.timeline = timeline;
-            });
     }
 
     /**

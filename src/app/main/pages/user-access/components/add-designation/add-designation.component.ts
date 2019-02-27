@@ -13,9 +13,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 })
 export class AddDesignationComponent implements OnInit {
 
-  private designationForm: FormGroup;
-  private formData: Designation;
-  private designationData;
+  designationForm: FormGroup;
+  formData: Designation;
+  designationData;
 
   constructor(private fb: FormBuilder, 
             private _serv: DesignationService,

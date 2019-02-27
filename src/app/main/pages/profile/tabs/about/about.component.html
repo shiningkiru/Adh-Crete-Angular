@@ -1,66 +1,68 @@
 <div id="about" class="p-24" fxLayout="row wrap">
 
-    <div class="about-content" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="65">
+    <div class="about-content" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="50">
 
-        <div class="profile-box info-box general" fxLayout="column">
+        <div class="profile-box info-box general" fxLayout="column" *ngIf="!user?.isAdmin">
 
             <header class="accent">
-                <div class="title">General Information</div>
+                <div class="title">Personal Information</div>
             </header>
 
             <div class="content">
-                <div class="info-line">
-                    <div class="title">Gender</div>
-                    <div class="info">{{about.general.gender}}</div>
-                </div>
 
                 <div class="info-line">
                     <div class="title">Birthday</div>
-                    <div class="info">{{about.general.birthday}}</div>
+                    <div class="info">{{ (user?.dateOfBirth)?user?.dateOfBirth:"NA" }}</div>
                 </div>
 
                 <div class="info-line">
-                    <div class="title">Locations</div>
-                    <div class="info location" fxLayout="row" fxLayoutAlign="start center"
-                         *ngFor="let location of about.general.locations">
-                        <span>{{location}}</span>
-                        <mat-icon class="s-16 ml-4">location_on</mat-icon>
-                    </div>
+                    <div class="title">Fathers Name</div>
+                    <div class="info">{{ (user?.fatherName)?user?.fatherName:"NA" }}</div>
                 </div>
 
                 <div class="info-line">
-                    <div class="title">About Me</div>
-                    <div class="info">{{about.general.about}}</div>
+                    <div class="title">Lalitha Name</div>
+                    <div class="info">{{ (user?.motherName)?user?.motherName:"NA" }}</div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title">Adhar number</div>
+                    <div class="info">{{ (user?.adharNumber)?user?.adharNumber:"NA" }}</div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title">PAN number</div>
+                    <div class="info">{{ (user?.panNumber)?user?.panNumber:"NA" }}</div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title">Driving Licence</div>
+                    <div class="info">{{ (user?.drivingLicence)?user?.drivingLicence:"NA" }}</div>
                 </div>
             </div>
 
         </div>
 
-        <div class="profile-box info-box work" fxLayout="column">
+        <div class="profile-box info-box work" fxLayout="column" *ngIf="!user?.isAdmin">
 
             <header class="accent">
-                <div class="title">Work</div>
+                <div class="title">Work Information</div>
             </header>
 
             <div class="content">
                 <div class="info-line">
-                    <div class="title">Occupation</div>
-                    <div class="info">{{about.work.occupation}}</div>
+                    <div class="title">Designation</div>
+                    <div class="info">{{ (user?.designation?.designationTitle)?user?.designation?.designationTitle:"NA" }}</div>
                 </div>
 
                 <div class="info-line">
-                    <div class="title">Skills</div>
-                    <div class="info">{{about.work.skills}}</div>
+                    <div class="title">Join Date</div>
+                    <div class="info">{{ (user?.dateOfJoin)?user?.dateOfJoin:"NA" }}</div>
                 </div>
 
                 <div class="info-line">
-                    <div class="title">Jobs</div>
-                    <table class="info jobs">
-                        <tr class="job" *ngFor="let job of about.work.jobs">
-                            <td class="company">{{job.company}}</td>
-                            <td class="date">{{job.date}}</td>
-                        </tr>
-                    </table>
+                    <div class="title">Current Salary</div>
+                    <div class="info">{{ (user?.currentSalary)?user?.currentSalary:"NA" }}</div>
                 </div>
             </div>
         </div>
@@ -68,31 +70,29 @@
         <div class="profile-box info-box contact" fxLayout="column">
 
             <header class="accent">
-                <div class="title">Contact</div>
+                <div class="title">Contact Information</div>
             </header>
 
             <div class="content">
-                <div class="info-line">
-                    <div class="title">Address</div>
-                    <div class="info">{{about.contact.address}}</div>
+
+                <div class="info-line" *ngIf="!user?.isAdmin">
+                    <div class="title">Current Address</div>
+                    <div class="info">{{ (user?.currentAddress)?user?.currentAddress:"NA" }}</div>
                 </div>
-                <div class="info-line">
-                    <div class="title">Tel.</div>
-                    <div class="info" *ngFor="let tel of about.contact.tel">
-                        <span>{{tel}}</span>
-                    </div>
+
+                <div class="info-line" *ngIf="!user?.isAdmin">
+                    <div class="title">Permanent Address</div>
+                    <div class="info">{{ (user?.permanentAddress)?user?.permanentAddress:"NA" }}</div>
                 </div>
+
                 <div class="info-line">
-                    <div class="title">Website</div>
-                    <div class="info" *ngFor="let website of about.contact.websites">
-                        <span>{{website}}</span>
-                    </div>
+                    <div class="title">Email Address</div>
+                    <div class="info">{{ (user?.email)?user?.email:"NA" }}</div>
                 </div>
+
                 <div class="info-line">
-                    <div class="title">Emails</div>
-                    <div class="info" *ngFor="let email of about.contact.emails">
-                        <span>{{email}}</span>
-                    </div>
+                    <div class="title">Mobile Number</div>
+                    <div class="info">{{ (user?.mobileNumber)?user?.mobileNumber:"NA" }}</div>
                 </div>
             </div>
 
@@ -100,53 +100,38 @@
 
     </div>
 
-    <div class="about-sidebar" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="35">
+    <div class="about-sidebar" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="50"  *ngIf="!user?.isAdmin">
+        <div class="profile-box info-box contact" fxLayout="column">
 
-        <div class="profile-box friends" fxLayout="column">
-
-            <header class="accent" fxLayout="row" fxLayoutAlign="space-between center">
-                <div class="title">Friends</div>
-                <div class="more secondary-text">
-                    <span>See 454 more...</span>
-                </div>
-            </header>
-
-            <div class="content" fxLayout="row wrap">
-                <div class="friend" fxFlex="20" *ngFor="let friend of about.friends">
-                    <img [src]="friend.avatar">
-                </div>
-            </div>
-
-        </div>
-
-        <div class="profile-box groups" fxLayout="column">
-
-            <header class="accent" fxLayout="row" fxLayoutAlign="space-between center">
-                <div class="title">Joined Groups</div>
-                <div class="more secondary-text">
-                    <span>See 6 more...</span>
-                </div>
+            <header class="accent">
+                <div class="title">Work Block Information</div>
             </header>
 
             <div class="content">
 
-                <div class="group" *ngFor="let group of about.groups" fxLayout="row"
-                     fxLayoutAlign="space-between center">
+                <div class="info-line" *ngIf="workFieldHash.indexOf('a') > -1">
+                    <div class="title">Country</div>
+                    <div class="info">{{ (user?.currentAddress)?user?.currentAddress:"NA" }}</div>
+                </div>
 
-                    <div fxLayout="row" fxLayoutAlign="start center">
+                <div class="info-line" *ngIf="workFieldHash.indexOf('ab') > -1">
+                    <div class="title">State</div>
+                    <div class="info">{{ (user?.permanentAddress)?user?.permanentAddress:"NA" }}</div>
+                </div>
 
-                        <div class="logo">{{group.name.substring(0,1)}}</div>
+                <div class="info-line" *ngIf="workFieldHash.indexOf('abc') > -1">
+                    <div class="title">Region</div>
+                    <div class="info">{{ (user?.email)?user?.email:"NA" }}</div>
+                </div>
 
-                        <div>
-                            <div class="name">{{group.name}}</div>
-                            <div class="category">{{group.category}}</div>
-                            <div class="members">{{group.members}} people</div>
-                        </div>
-                    </div>
+                <div class="info-line" *ngIf="workFieldHash.indexOf('abcd') > -1">
+                    <div class="title">City</div>
+                    <div class="info">{{ (user?.mobileNumber)?user?.mobileNumber:"NA" }}</div>
+                </div>
 
-                    <button mat-icon-button aria-label="More">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
+                <div class="info-line" *ngIf="workFieldHash.indexOf('abcde') > -1">
+                    <div class="title">Block</div>
+                    <div class="info">{{ (user?.mobileNumber)?user?.mobileNumber:"NA" }}</div>
                 </div>
             </div>
 
